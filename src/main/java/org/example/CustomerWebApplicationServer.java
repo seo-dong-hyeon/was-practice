@@ -37,11 +37,7 @@ public class CustomerWebApplicationServer {
                     BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
                     DataOutputStream dos = new DataOutputStream(out);
 
-                    // 프로토콜
-                    String line;
-                    while ((line = br.readLine()) != ""){
-                        System.out.println(line);
-                    }
+                    HttpRequest httpRequest = new HttpRequest(br);
                 }
             }
         }
