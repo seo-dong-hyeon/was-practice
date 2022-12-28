@@ -9,10 +9,14 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CustomerWebApplicationServer {
 
     private final int port;
+
+    private final ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerWebApplicationServer.class);
 
@@ -36,10 +40,13 @@ public class CustomerWebApplicationServer {
                 /**
                  * 문제점
                  * 1.Thread 생성 -> 독립적 stack 메모리 할당 -> 성능 하락
-                 * 2.동시 접속 증가 -> cpu context switching 증가, 메모리 사용량 증가
+                 * 2.동시 접속 증가 -> 많은 Thread 생성 -> cpu context switching 증가, 메모리 사용량 증가
                  * 3.서버 리소스 가용성 감소 -> 서버 다운
+                 *
+                 * 해결책
+                 * Thread pool 생성 -> 안정적 서비스 운용
                  * */
-                new Thread(new ClientRequestHandler(clientSocket)).start();
+                executorService.execute(new ClientRequestHandler(clientSocket));
             }
         }
     }
