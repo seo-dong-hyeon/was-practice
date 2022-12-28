@@ -31,28 +31,15 @@ public class CustomerWebApplicationServer {
             // 클라이언트 소켓을 기다림
             while ((clientSocket = serverSocket.accept()) != null){
                 logger.info("[CustomerWebApplicationServer] connected!");
-
-                // 요청 -> Spring에 요청
-                // 톰캣 역할
-                try(InputStream in = clientSocket.getInputStream(); OutputStream out = clientSocket.getOutputStream()){
-                    // InputStream -> Reader -> Buffer reader -> line by line으로 읽어오기 가능
-                    BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
-                    DataOutputStream dos = new DataOutputStream(out);
-
-                    HttpRequest httpRequest = new HttpRequest(br);
-                    if (httpRequest.isGetRequest() && httpRequest.matchPath("/calculate")){
-                        QueryStrings queryStrings = httpRequest.getQueryStrings();
-                        int operand1 = Integer.parseInt(queryStrings.getValue("operand1"));
-                        String operator = queryStrings.getValue("operator");
-                        int operand2 = Integer.parseInt(queryStrings.getValue("operand2"));
-                        int result = Calculator.calculate(new PositiveNumber(operand1), operator, new PositiveNumber(operand2));
-                        byte[] body = String.valueOf(result).getBytes();
-
-                        HttpResponse response = new HttpResponse(dos);
-                        response.response200Header("application/json", body.length);
-                        response.responseBody(body);
-                    }
-                }
+                // 사용자 요청이 들어올 때마다 Thread를 새로 생성해서 처리
+                // 새로운 요청에 대해서도 이전 요청을 기다리지 않고 처리 가능
+                /**
+                 * 문제점
+                 * 1.Thread 생성 -> 독립적 stack 메모리 할당 -> 성능 하락
+                 * 2.동시 접속 증가 -> cpu context switching 증가, 메모리 사용량 증가
+                 * 3.서버 리소스 가용성 감소 -> 서버 다운
+                 * */
+                new Thread(new ClientRequestHandler(clientSocket)).start();
             }
         }
     }
