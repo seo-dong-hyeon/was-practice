@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39f36f15-8b1d-4416-804b-61d257c5854d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/counter/Counter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/counter/RaceConditionDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomerWebApplicationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CustomerWebApplicationServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +74,26 @@
       <recent name="C:\project\was-practice\src\main\java\org\example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.RaceConditionDemo">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="was-practice.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaceConditionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.counter.RaceConditionDemo" />
+      <module name="was-practice.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.counter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,6 +135,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RaceConditionDemo" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.QueryStringTest.create" />
         <item itemvalue="JUnit.RequestLineTest.create" />
@@ -171,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672242864360</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="사용자 요청 처리 방식 변경&#10;&#10;요청마다 Thread 새로 생성하여 처리 -&gt; Thread pool에서 처리">
+      <created>1672243475738</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672243475738</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,6 +203,7 @@
     <MESSAGE value="HttpRequest 구현 (ing)&#10;&#10;1.RequestLine&#10;2.QueryString" />
     <MESSAGE value="HttpRequest, calculate, HttpResponse 구현" />
     <MESSAGE value="사용자 요청 처리 방식 변경&#10;&#10;메인 Thread -&gt; 요청이 올 때마다 Thread 새로 생성하여 처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="사용자 요청 처리 방식 변경&#10;&#10;메인 Thread -&gt; 요청이 올 때마다 Thread 새로 생성하여 처리" />
+    <MESSAGE value="사용자 요청 처리 방식 변경&#10;&#10;요청마다 Thread 새로 생성하여 처리 -&gt; Thread pool에서 처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="사용자 요청 처리 방식 변경&#10;&#10;요청마다 Thread 새로 생성하여 처리 -&gt; Thread pool에서 처리" />
   </component>
 </project>
