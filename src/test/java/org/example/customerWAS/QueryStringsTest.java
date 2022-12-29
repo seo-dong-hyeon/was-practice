@@ -1,8 +1,7 @@
-package org.example;
+package org.example.customerWAS;
 
+import org.example.customerWAS.QueryStrings;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

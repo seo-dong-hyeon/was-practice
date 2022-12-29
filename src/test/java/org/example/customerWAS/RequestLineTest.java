@@ -1,5 +1,6 @@
-package org.example;
+package org.example.customerWAS;
 
+import org.example.customerWAS.RequestLine;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.customerWAS;
 
 import org.example.calculator.Domain.Calculator;
 import org.example.calculator.Domain.PositiveNumber;
